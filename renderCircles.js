@@ -1,12 +1,18 @@
 
 function renderCircles(circles) {
     // HINT: You probably need to write a for loop!
-    //       Or, if you're feeling fancy, use .map() 
-    return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(circles)}</code>
-        </div>
-    `
+    //       Or, if you're feeling fancy, use .map()
+    var circlesHTML = "";
+    for (i = 0; i < circles.length; i++) {
+      var singleCircle = `<div style = "
+                          width: ${circles[i].radius};
+                          height: ${circles[i].radius};
+                          border-radius: 50%;
+                          background-color: ${circles[i].color};
+                          "></div>`
+      circlesHTML += singleCircle;
+    }
+    return circlesHTML;
 }
 
 function circles() {
@@ -14,19 +20,19 @@ function circles() {
 
     var circlesAbstraction = [
         {
-            radius: 50,
+            radius: '50px',
             color: "#FF00FF"
         },
         {
-            radius: 30,
+            radius: '30px',
             color: "#FF99AA"
         },
         {
-            radius: 60,
+            radius: '60px',
             color: "#0000FF"
         },
         {
-            radius: 10,
+            radius: '10px',
             color: "#000000"
         },
     ];
