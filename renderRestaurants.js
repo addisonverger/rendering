@@ -1,12 +1,25 @@
 
 function renderRestaurants(restaurants) {
-    // HINT: You can use <img /> tags that point to these playing card images: 
-    // https://commons.wikimedia.org/wiki/Category:SVG_playing_cards
-    return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(restaurants)}</code>
-        </div>
-    `
+  return `<div style="display: flex; flex-direction: row; justify-content: space-around">` +
+          restaurants.map(restaurantCard).join('');
+}
+
+function restaurantCard(cardData) {
+  return `
+    <div style="background-color: #d6d8db; border-radius: 5px; width: 200px">
+    <h2 style="margin: 0 10px">${cardData.name}</h2>
+    <p style="color: #4b4d4f; margin: 0 10px">${cardData.type}</p>
+    <p style="color: #49d83e; font-weight: bold; font-size: 150%; margin: 0 10px">${price(cardData.priceRating)}</p>
+    </div>
+  `
+}
+
+function price(priceRating) {
+  var moneyArr = [];
+  for (i = 0; i < priceRating; i++) {
+    moneyArr.push('$');
+  }
+  return moneyArr.join('');
 }
 
 function restaurants() {

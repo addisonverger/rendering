@@ -1,12 +1,15 @@
 
 function renderPokerHand(pokerHand) {
-    // HINT: You can use <img /> tags that point to these playing card images: 
+    // HINT: You can use <img /> tags that point to these playing card images:
     // https://commons.wikimedia.org/wiki/Category:SVG_playing_cards
-    return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(pokerHand)}</code>
-        </div>
-    `
+    return `<div style="display: flex; flex-direction: row; justify-content: space-around">` +
+            pokerHand.map(renderCard).join('');
+}
+
+function renderCard(cardData) {
+  return `
+    <img src="cards/${cardData.value}${cardData.suit}.png" style="width: 100px; height: 100%"/>
+  `
 }
 
 function pokerHand() {
