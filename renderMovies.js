@@ -1,10 +1,25 @@
 
 function renderMovies(movies) {
-    return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(movies)}</code>
-        </div>
-    `
+  return `<div style="display: flex; flex-direction: column; justify-content: space-around">` +
+          movies.map(movieCard).join('');
+}
+
+function movieCard(movieData) {
+  return `
+    <div style="display: flex; flex-direction: row; justify-content: space-around; background-color: #bbbec1; border-radius: 5px; width: 400px; height: 200px; padding: 10px">
+      <img src="${movieData.poster}" style="object-fit: contain; width: 40%"/>
+      <div style="background-color: #d6d8db; border-radius: 5px; padding: 10px; width: 60%">
+        <h2 style="margin: 0; font-size: 100%">${movieData.title}</h2>
+        <p style="margin: 0; font-weight: bold; font-size: 50%">${movieData.year}</p>
+        <p style="margin: 10px 0">
+        IMDB:<br />
+        ${movieData.imdbRating} / 10</p>
+        <p style="margin: 10px 0">
+        Rotten Tomatoes:<br />
+        ${movieData.rottenTomatoesRating * 100}%</p>
+      </div>
+    </div>
+  `
 }
 
 function movies() {
