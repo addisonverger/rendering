@@ -1,7 +1,7 @@
 
 function renderMovies(movies) {
   return `<div style="display: flex; flex-direction: column; justify-content: space-around">` +
-          movies.map(movieCard).join('');
+          movies.map(movieCard).join('') + `</div>`;
 }
 
 function movieCard(movieData) {

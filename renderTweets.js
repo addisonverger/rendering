@@ -1,10 +1,44 @@
 
 function renderTweets(tweets) {
-    return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(tweets)}</code>
+    return `<div style="display= flex; flex-direction: column">` +
+    tweets.map(tweetCard).join('') + `</div>`;
+}
+
+function tweetCard(tweetData) {
+  return `
+    <div style="padding: 20px">
+      <div style="display: flex; flewx-direction: row">
+        <img src="${tweetData.user.profilePic}" style="width: 50px; height: 50px; margin-right: 10px"/>
+        <div style="display: flex; flex-direction: column">
+          <div style="display: flex; flex-direction: row; margin: 0">
+            <p style="font-weight: bold; margin: 0">${tweetData.user.username}</p>
+            ${verified(tweetData.user.isVerified)}
+          </div>
+          <p style="margin: 0; font-size: 80%; color: #868889">${tweetData.user.handle}</p>
         </div>
-    `
+      </div>
+      <p style="margin-top: 10px; font-size: 150%">${tweetData.text}</p>
+      <hr />
+      <div style="display: flex; flex-direction: row; font-size: 80%">
+        <div>Replies</div>
+        <div style="margin-left: 5px; margin-right: 10px">${tweetData.replies}</div>
+        <div>Retweets</div>
+        <div style="margin-left: 5px; margin-right: 10px">${tweetData.retweets}</div>
+        <div>Likes</div>
+        <div style="margin-left: 5px; margin-right: 10px">${tweetData.likes}</div>
+        <div>E-mail</div>
+      </div>
+    </div>
+  `
+}
+
+function verified(isVerified) {
+  if (isVerified === true) {
+    return `<img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" style="width: 15px; height: 15px; margin: 5px"/>`
+  }
+  else {
+    return '';
+  }
 }
 
 function tweets() {
